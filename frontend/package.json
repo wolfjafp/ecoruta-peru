@@ -1,0 +1,25 @@
+{
+  "name": "ecoruta-peru",
+  "version": "1.0.0",
+  "description": "Prototipo web informativo para el proyecto EcoRuta Perú - Programación Web Básica PA2 ISIL",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
+    "build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
+  },
+  "keywords": [
+    "tailwind",
+    "html5",
+    "ecoruta",
+    "peru",
+    "isil",
+    "pa2"
+  ],
+  "author": "Jose Alberto Fernandez Poma",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^3.4.19"
+  }
+}
