@@ -1,0 +1,17 @@
+# Variables de entorno y datos de conexion
+.env
+
+# Dependencias de backend y frontend
+/vendor/
+node_modules/
+frontend/node_modules/
+
+# Archivos de configuracion del editor
+.vscode/
+.idea/
+
+# Temporales de sistema
+*.log
+Thumbs.db
+Desktop.ini
+.DS_Store

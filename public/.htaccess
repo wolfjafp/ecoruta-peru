@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Si el archivo o directorio solicitado existe fisicamente, no se reescribe
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirigir todas las peticiones a index.php manteniendo query strings
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
