@@ -1,0 +1,829 @@
+{
+  "info": {
+    "_postman_id": "3657-ecoruta-api-pa4",
+    "name": "EcoRuta Peru - API REST MVC (ISIL PA4)",
+    "description": "Coleccion de pruebas completa de los 6 modulos CRUD para la Evaluacion Continua 4 - Prof. Luiggui Ynga",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Bienvenida y Estado",
+      "item": [
+        {
+          "name": "01. Bienvenida y estado de la API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": []
+            }
+          }
+        },
+        {
+          "name": "11. Validar nivel de exigencia vacio (Error 422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categorias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_categoria\": \"Caminata Urbana\",\n  \"nivel_exigencia\": \"\"\n}"
+            }
+          }
+        },
+        {
+          "name": "14. Buscador Dinamico con LIKE (?q=Lomas)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/rutas/buscar?q=Lomas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "rutas",
+                "buscar"
+              ]
+            }
+          }
+        },
+        {
+          "name": "27. Validar Exceso de Capacidad en Grupo (Error 422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/reservas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "reservas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo_reserva\": \"RES-2026-999\",\n  \"id_ruta\": 1,\n  \"id_usuario\": 1,\n  \"fecha_salida\": \"2026-12-15\",\n  \"numero_personas\": 25,\n  \"total_pago\": 1500.0\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "1. Regiones",
+      "item": [
+        {
+          "name": "02. Listar todas las Regiones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/regiones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "regiones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "03. Obtener Region por ID (Sierra)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/regiones/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "regiones",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "04. Obtener Region Inexistente (Error 404)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/regiones/999",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "regiones",
+                "999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "05. Validar campo obligatorio en Region (Error 422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/regiones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "regiones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_region\": \"\"\n}"
+            }
+          }
+        },
+        {
+          "name": "06. Crear Nueva Region (Altiplano)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/regiones",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "regiones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_region\": \"Altiplano y Puna\",\n  \"clima_predominante\": \"Frio extremo con vientos constantes\",\n  \"altitud_promedio_msnm\": 4100,\n  \"descripcion\": \"Zona de mesetas altoandinas del sur del Peru\"\n}"
+            }
+          }
+        },
+        {
+          "name": "07. Actualizar Region por ID",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/regiones/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "regiones",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_region\": \"Costa Peruana\",\n  \"clima_predominante\": \"Calido arido y templado humedo costero\",\n  \"altitud_promedio_msnm\": 160,\n  \"descripcion\": \"Zona litoral y desiertos con lomas estacionales\"\n}"
+            }
+          }
+        },
+        {
+          "name": "12. Listar Catalogo de Rutas (con JOIN a Region y Categoria)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/rutas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "rutas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "15. Validar creacion de Ruta sin Region existente (Error 422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/rutas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "rutas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_ruta\": \"Sendero Sin Region\",\n  \"id_region\": 9999,\n  \"id_categoria\": 1\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Categorias",
+      "item": [
+        {
+          "name": "08. Listar Categorias de Turismo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categorias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "09. Obtener Categoria por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/categorias/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categorias",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "10. Crear Categoria (Cicloturismo)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categorias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_categoria\": \"Cicloturismo de Montana\",\n  \"nivel_exigencia\": \"Alto\",\n  \"descripcion\": \"Recorridos tecnicos en bicicleta por senderos rurales\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Rutas Ecoturisticas",
+      "item": [
+        {
+          "name": "13. Ficha Tecnica de Ruta por ID (Laguna 69)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/rutas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "rutas",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "16. Crear Nueva Ruta (Valle Sagrado)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/rutas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "rutas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_region\": 2,\n  \"id_categoria\": 3,\n  \"nombre_ruta\": \"Valle Sagrado - Maras y Moray\",\n  \"altitud_maxima_msnm\": 3500,\n  \"distancia_km\": 18.5,\n  \"duracion_dias\": 1,\n  \"dificultad\": \"Facil\",\n  \"precio_referencial\": 95.0,\n  \"requiere_guia_obligatorio\": 0,\n  \"estado\": \"Activo\"\n}"
+            }
+          }
+        },
+        {
+          "name": "25. Listar Reservas (con JOIN a Rutas, Clientes y Guias)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/reservas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "reservas"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Guias SERNANP",
+      "item": [
+        {
+          "name": "17. Listar Guias Oficiales SERNANP",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/guias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "guias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "18. Obtener Guia por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/guias/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "guias",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "19. Validar DNI invalido de Guia (Error 422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/guias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "guias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Pedro\",\n  \"apellidos\": \"Castillo\",\n  \"dni\": \"123\",\n  \"correo\": \"pedro@ecoruta.pe\",\n  \"telefono\": \"987654321\",\n  \"certificacion_sernanp\": \"SERNANP-001\"\n}"
+            }
+          }
+        },
+        {
+          "name": "20. Crear Nuevo Guia Acreditado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/guias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "guias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Manuel Alejandro\",\n  \"apellidos\": \"Solis Gutierrez\",\n  \"dni\": \"48963254\",\n  \"telefono\": \"984561230\",\n  \"correo\": \"manuel.solis@ecoruta.pe\",\n  \"certificacion_sernanp\": \"SERNANP-PNH-2023-310\",\n  \"experiencia_anios\": 5,\n  \"estado\": \"Disponible\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Usuarios Senderistas",
+      "item": [
+        {
+          "name": "21. Listar Usuarios Senderistas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "22. Obtener Usuario por ID (Jose Fernandez)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/usuarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "usuarios",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "23. Validar Correo Invalido en Usuario (Error 422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Mario\",\n  \"apellidos\": \"Bross\",\n  \"correo\": \"correo-no-valido\",\n  \"numero_documento\": \"99887766\"\n}"
+            }
+          }
+        },
+        {
+          "name": "24. Crear Nuevo Senderista",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Patricia Elena\",\n  \"apellidos\": \"Zavala Gomez\",\n  \"correo\": \"patricia.zavala@gmail.com\",\n  \"telefono\": \"974125896\",\n  \"tipo_documento\": \"DNI\",\n  \"numero_documento\": \"71458962\",\n  \"condicion_fisica\": \"Intermedio\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Reservas de Tours",
+      "item": [
+        {
+          "name": "26. Detalle de Reserva por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/reservas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "reservas",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "28. Crear Reserva Exitosa (RES-2026-007)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/reservas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "reservas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo_reserva\": \"RES-2026-007\",\n  \"id_ruta\": 1,\n  \"id_usuario\": 2,\n  \"id_guia\": 1,\n  \"fecha_salida\": \"2026-12-24\",\n  \"numero_personas\": 3,\n  \"total_pago\": 360.0,\n  \"estado_reserva\": \"Confirmada\",\n  \"observaciones_medicas\": \"Caminantes aclimatados con seguro de excursion\"\n}"
+            }
+          }
+        },
+        {
+          "name": "29. Actualizar Estado de Reserva",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/reservas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "reservas",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_ruta\": 1,\n  \"id_usuario\": 1,\n  \"id_guia\": 2,\n  \"fecha_salida\": \"2026-12-05\",\n  \"numero_personas\": 2,\n  \"total_pago\": 240.0,\n  \"estado_reserva\": \"Completada\",\n  \"observaciones_medicas\": \"Recorrido completado con exito\"\n}"
+            }
+          }
+        },
+        {
+          "name": "30. Cancelar Reserva (Delete Logico)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/reservas/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "reservas",
+                "6"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
